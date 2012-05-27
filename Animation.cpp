@@ -19,9 +19,15 @@ GLuint Animation::GetID (std::string state)
 {
 	if ((state == "OneTime" && CurFrame != FrameID.size()) || (state == "Repeating"))
 	{
-		CurFrame = FrameID[(unsigned int)fmod (glfwGetTime() , FrameID.size() - 1)];
+		CurFrame = FrameID[(unsigned int)fmod (glfwGetTime() * Speed , FrameID.size() - 1)];
 	}
+	
+	std::cout << CurFrame << std::flush;
 	
 	return FrameID[CurFrame];
 }
 
+void Animation::SetSpeed (float s)
+{
+	Speed = s;
+}

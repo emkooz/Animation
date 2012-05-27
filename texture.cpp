@@ -9,6 +9,7 @@ Texture::Texture()
 	anim.PushAnimVector ("runner_04.png");
 	anim.PushAnimVector ("runner_05.png");
 	anim.PushAnimVector ("runner_06.png");
+	anim.SetSpeed (15.0f);
 	
 	Verts.push_back (glm::vec2 (-1.0f , -1.0f));
 	Verts.push_back (glm::vec2 (-1.0f , 1.0f));
@@ -44,7 +45,7 @@ void Texture::Draw()
 		glTexCoordPointer (2 , GL_FLOAT , 0 , NULL);
 
 		glEnable (GL_TEXTURE_2D);
-		glBindTexture (GL_TEXTURE_2D , img);
+		glBindTexture (GL_TEXTURE_2D , anim.GetID("Repeating"));
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
